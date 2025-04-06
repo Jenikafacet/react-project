@@ -1,0 +1,32 @@
+.button__box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.button__save {
+    background-color: aquamarine;
+    border: none;
+    border-radius: 10px;
+    padding: 5px 10px;
+    min-width: 52px;
+}
+
+.button__save:hover {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.button__cancel {
+    background-color: rgb(255, 232, 127);
+    border: none;
+    border-radius: 10px;
+    padding: 5px 10px;
+    min-width: 62px;
+}
+
+.button__cancel:hover {
+    font-size: 16px;
+    font-weight: bold;
+}

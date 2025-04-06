@@ -1,0 +1,52 @@
+@value colors: "./colors.css";
+@value customHover, customRed, customActiveText, customBorder, customOrange from colors;
+
+.card__title:hover {
+    color: customRed;    
+}
+
+.card__transcription:hover {
+    color:customHover;
+}
+
+.card__body {
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    padding: 0 10px;
+    gap: 15px;
+    width: 100%;
+    height: 70px;
+    border: 1px solid customBorder;
+    color:darkolivegreen;
+}
+
+.card__translation:hover {
+    color:customHover;
+}
+
+.card__body:active {
+    background-color: beige;
+    border: 1px solid burlywood;
+    color: customActiveText;
+}
+
+.card__body__add {
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    padding: 0 10px;
+    gap: 15px;
+    width: 100%;
+    height: 70px;
+    border: 2px solid customBorder;
+    background-color:azure;
+
+}
+
+input {
+    height: 20px;
+    border: 1px solid customOrange;
+    outline: none;
+    color: customOrange;
+}

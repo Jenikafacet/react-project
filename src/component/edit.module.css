@@ -1,0 +1,35 @@
+@value colors: "./colors.css";
+@value customHover, customRed, customActiveText, customBorder, customOrange from colors;
+
+.button__box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.button__edit {
+    background-color: customOrange;
+    border: none;
+    border-radius: 10px;
+    padding: 5px 10px;
+    min-width: 52px;
+}
+
+.button__edit:hover {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.button__delete {
+    background-color: customRed;
+    border: none;
+    border-radius: 10px;
+    padding: 5px 10px;
+    min-width: 62px;
+}
+
+.button__delete:hover {
+    font-size: 16px;
+    font-weight: bold;
+}

@@ -1,25 +1,33 @@
 import React from 'react';
-import Card from './Card';
+import CardItem from './CardItem';
 
 function CardList() {
     return (
         <React.Fragment>
             <div className="card-list">
-                <Card
-                    title='...'
-                    text='///'
+                <CardItem
+                    check={false}
+                    title='word'
+                    transcription='///'
+                    translation='&&&'
                 />
-                <Card
-                    title='...'
-                    text='///'
+                <CardItem
+                    check={true}
+                    title='word'
+                    transcription='///'
+                    translation='&&&'
                 />
-                <Card
-                    title='...'
-                    text='///'
+                <CardItem
+                    check={true}
+                    title='word'
+                    transcription='///'
+                    translation='&&&'
                 />
-                <Card
-                    title='...'
-                    text='///'
+                <CardItem
+                    check={true}
+                    title='word'
+                    transcription='///'
+                    translation='&&&'
                 />
             </div>
         </React.Fragment>
