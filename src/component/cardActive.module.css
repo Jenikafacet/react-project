@@ -1,0 +1,34 @@
+.card__body {
+    background-color: rgb(235, 231, 238);
+    padding: 10px 0;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    width: 170px;
+    height: 200px;
+    align-items: center;
+    gap: 20px;
+}
+
+.card__button {
+    background-color: rgb(40, 204, 117);
+    border-radius: 10px;
+    border: none;
+    padding: 5px 15px;
+}
+
+.card__transcription {
+    color: gray;
+    font-size: 16px;
+}
+
+.card__title {
+    font-size: 22px;
+}
+
+.card__translation {
+    color: rgb(40, 204, 117);
+    font-size: 20px;
+    font-weight: 600;
+}
