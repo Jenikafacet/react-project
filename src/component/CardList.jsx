@@ -1,15 +1,12 @@
 import React, { useState }  from 'react';
 import CardItem from './CardItem';
 import CardActive from './CardActive';
+import cardListData from '../data/cardListData'; 
 
 
 function CardList() {
 
-    const [cardList, setCardList] = useState([{id: 1, title: 'word', transcription: '///', translation: 'Слово'},
-        {id: 2, title: 'see', transcription: '///', translation: 'Видеть'},
-        {id: 3, title: 'snow', transcription: '///', translation: 'Снег'},
-        {id: 4, title: 'apple', transcription: '///', translation: 'Яблоко'}
-    ]);
+    const [cardList, setCardList] = useState(cardListData);
 
     const handleSave = (updatedItem) => {
         setCardList(prevList =>
@@ -26,6 +23,7 @@ function CardList() {
     };
 
     const activeItem = cardList.find(item => item.id === activeId);
+    
 
     return (
         <React.Fragment>
@@ -42,16 +40,17 @@ function CardList() {
                     />
                 })}
             </div>
-            <div className="card-active">
-                {activeItem && (
+            {activeItem && (
+                <div className="card-active">
                     <CardActive
                         key={activeItem.id}
                         title={activeItem.title}
                         transcription={activeItem.transcription}
                         translation={activeItem.translation}
                     />
-                )}
-            </div>
+                </div>
+            )}
+            
         </React.Fragment>
     );
 }

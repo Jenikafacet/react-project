@@ -1,0 +1,63 @@
+.card__box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button__box {
+    background-color:  rgb(40, 204, 117);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    width: 50px;
+    height: 50px;
+}
+
+.button__box:hover {
+    transition: 0.5s;
+    transform: scale(1.05);
+    background-color: rgb(28, 152, 86);
+}
+
+.button__box:disabled {
+    background-color:  rgb(235, 231, 238);
+    cursor: not-allowed;
+}
+
+.card__transition {
+    transition: all 0.5s ease;
+    opacity: 1;
+    transform: translateX(0)
+}
+
+.card__transition.hidden {
+    transition: all 0.5s ease;
+    opacity: 0;
+    transform: translateX(-50px)
+}
+
+.finish__massage {
+    color: black;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.finish__massage button {
+    border-radius: 60px;
+    width: 60px;
+    height: 60px;
+}
+
+.finish__box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}

@@ -45,3 +45,11 @@
   width: 700px;
 }
 
+.card__item {
+  display: flex;
+  justify-self: center;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+}
+

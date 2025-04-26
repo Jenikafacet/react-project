@@ -11,6 +11,7 @@
     border-radius: 10px;
     padding: 5px 10px;
     min-width: 52px;
+    cursor: pointer;
 }
 
 .button__save:hover {
@@ -24,6 +25,7 @@
     border-radius: 10px;
     padding: 5px 10px;
     min-width: 62px;
+    cursor: pointer;
 }
 
 .button__cancel:hover {

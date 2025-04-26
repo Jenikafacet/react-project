@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from './cardActive.module.css';
 
 function CardActive(props) {
@@ -10,8 +10,12 @@ function CardActive(props) {
         setShowTranslation(true);
     };
 
+    useEffect(() => {
+        setShowTranslation(false);
+    }, [title]);
+
     return (
-        <div className="card">
+        <div className="card__item">
             <div className={styles.card__body}>
                 <div>
                     <h4 className={styles.card__title}>{title}</h4>
