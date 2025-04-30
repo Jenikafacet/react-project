@@ -21,13 +21,12 @@ function CardActive(props) {
                     <h4 className={styles.card__title}>{title}</h4>
                     <p className={styles.card__transcription}>{transcription}</p>
                 </div>
-                {showTranslation ? (
-                    <div className={styles.card__translation}>{translation}</div>
-                )
-                : (<button onClick={handleClick} className={styles.card__button}>
-                    Проверить
-                </button>)
-                }
+                    {showTranslation ? ( 
+                        <div className={styles.card__translation}>{translation}</div>
+                        ) : (<button onClick={handleClick} className={styles.card__button}>
+                        Проверить
+                    </button>)
+                    }
             </div>
         </div>
     );

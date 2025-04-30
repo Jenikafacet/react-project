@@ -40,6 +40,7 @@ function CardActiveList() {
 
     return (
         <React.Fragment>
+            <h1>Карточки слов</h1>
             <div className={styles.card__box}>
                 <button className={styles.button__box} onClick={handlePrev} disabled={currentIndex === 0}>
                     <img src={left} alt="назад" width="30px" height="30px" />
@@ -49,13 +50,13 @@ function CardActiveList() {
                         title={cardListData[currentIndex].title}
                         transcription={cardListData[currentIndex].transcription}
                         translation={cardListData[currentIndex].translation}
-                    />   
+                    /> 
                 </div>
                 <button className={styles.button__box} onClick={handleNext} disabled={currentIndex === cardListData.length - 1}>
                     <img src={right} alt="вперед" width="30px" height="30px" />
                 </button>
-
             </div>
+            <div className={styles.card__number}>{currentIndex + 1} из {cardListData.length}</div>  
             {currentIndex === cardListData.length - 1 && (
                 <div className={styles.finish__massage}>
                     <div className={styles.finish__box}>

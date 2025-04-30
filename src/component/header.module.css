@@ -1,0 +1,14 @@
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:  rgb(235, 231, 238);
+    
+}
+
+.header__box {
+    display: flex;
+    align-items: center;
+    width: 95%;
+    gap: 10px;
+}

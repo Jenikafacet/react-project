@@ -30,7 +30,7 @@
 .card__transition {
     transition: all 0.5s ease;
     opacity: 1;
-    transform: translateX(0)
+    transform: translateX(0);
 }
 
 .card__transition.hidden {
@@ -46,7 +46,7 @@
     align-items: center;
     justify-content: center;
     gap: 15px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .finish__massage button {
@@ -60,4 +60,8 @@
     align-items: center;
     justify-content: center;
     gap: 5px;
+}
+
+.card__number {
+    margin-bottom: 20px;
 }
