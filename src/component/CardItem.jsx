@@ -7,12 +7,46 @@ function CardItem(props) {
     const {onClick, title, transcription, translation, onSave, id} = props;
 
     const [isActive, setActive] = useState(false);
+    const [errors, setErrors] = useState({
+        title: false,
+        transcription: false,
+        translation: false,
+    })
+
+    const validateFields = (fields) => {
+        return {
+            title: fields.title.trim() === '',
+            transcription: fields.transcription.trim() === '',
+            translation: fields.translation.trim() === '',
+        }
+    }
         
     const handleClick = () => {
         setActive(true);
     };
 
     const handleClickSave = () => {
+        const newErrors = validateFields({
+            title: editTitle,
+            transcription: editTranscription,
+            translation: editTranslation,
+        });
+        setErrors(newErrors);
+
+        const hasErrors = Object.values(newErrors).some(Boolean);
+
+        if (hasErrors) {
+            alert("Ошибка: все поля должны быть заполнены.");
+            return;
+        }
+
+        console.log({
+            id,
+            title: editTitle,
+            transcription: editTranscription,
+            translation: editTranslation,
+        });
+
         setActive(false);
         if (onSave) {
             onSave({
@@ -37,13 +71,19 @@ function CardItem(props) {
 
     const handleTitleChange = (event) => {
         setEditTitle(event.target.value);
+        setErrors((prev) => ({ ...prev, title: event.target.value.trim() === '' }));
     };
+
     const handleTranscriptionChange = (event) => {
         setEditTranscription(event.target.value);
+        setErrors((prev) => ({ ...prev, transcription: event.target.value.trim() === '' }));
     };
     const handleTranslationChange = (event) => {
         setEditTranslation(event.target.value);
+        setErrors((prev) => ({ ...prev, translation: event.target.value.trim() === '' }));
     };
+
+    const isSaveDisabled = Object.values(errors).some(Boolean);
 
     return (
         <div onClick={onClick} className="card">
@@ -55,10 +95,10 @@ function CardItem(props) {
                 <Edit onClick={handleClick} />
             </div>
             : <div className={styles.card__body__add}>
-                <input type="text" value={editTitle} onChange={handleTitleChange} />
-                <input type="text" value={editTranscription} onChange={handleTranscriptionChange}/>
-                <input type="text" value={editTranslation} onChange={handleTranslationChange}/>
-                <Save onClick={handleClickSave} onCancel={handleCancel}/>
+                <input type="text" value={editTitle} onChange={handleTitleChange} className={errors.title ? styles.inputError : ''} />
+                <input type="text" value={editTranscription} onChange={handleTranscriptionChange} className={errors.transcription ? styles.inputError : ''} />
+                <input type="text" value={editTranslation} onChange={handleTranslationChange} className={errors.translation ? styles.inputError : ''} />
+                <Save onClick={handleClickSave} onCancel={handleCancel} disabled={isSaveDisabled} />
             </div>}
         </div>
     );

@@ -47,6 +47,12 @@
 input {
     height: 20px;
     border: 1px solid customOrange;
+    border-radius: 10px;
     outline: none;
     color: customOrange;
+}
+
+.inputError {
+    outline: 3px solid red;
+    border: none;
 }

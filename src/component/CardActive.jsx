@@ -1,10 +1,7 @@
-import React, { useEffect, useState, forwardRef } from "react";
+import { useEffect, useState } from "react";
 import styles from './cardActive.module.css';
 
-// function CardActive(props) {
-//     const {title, transcription, translation, id} = props;
-
-const CardActive = forwardRef((props) => {
+function CardActive(props) {
     const {title, transcription, translation, buttonRef} = props;
 
     const [showTranslation, setShowTranslation] = useState(false);
@@ -40,6 +37,6 @@ const CardActive = forwardRef((props) => {
             </div>
         </div>
     );
-})
+}
 
 export default CardActive;

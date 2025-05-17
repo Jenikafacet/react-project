@@ -1,6 +1,6 @@
 import React, { useState }  from 'react';
 import CardItem from './CardItem';
-import CardActive from './CardActive';
+// import CardActive from './CardActive';
 import cardListData from '../data/cardListData'; 
 
 
@@ -16,13 +16,13 @@ function CardList() {
         );
     };
 
-    const [activeId, setActiveId] = useState(null);
+    // const [activeId, setActiveId] = useState(null);
     
-    const handleClick = (id) => {
-        setActiveId(id);
-    };
+    // const handleClick = (id) => {
+    //     setActiveId(id);
+    // };
 
-    const activeItem = cardList.find(item => item.id === activeId);
+    // const activeItem = cardList.find(item => item.id === activeId);
     
 
     return (
@@ -30,7 +30,7 @@ function CardList() {
             <div className="card-list">
                 {cardList.map((item)=> {
                     return <CardItem 
-                        onClick={() => handleClick(item.id)}
+                        // onClick={() => handleClick(item.id)}
                         onSave={handleSave}
                         key={item.id}
                         id={item.id}
@@ -40,7 +40,7 @@ function CardList() {
                     />
                 })}
             </div>
-            {activeItem && (
+            {/* {activeItem && (
                 <div className="card-active">
                     <CardActive
                         key={activeItem.id}
@@ -49,7 +49,7 @@ function CardList() {
                         translation={activeItem.translation}
                     />
                 </div>
-            )}
+            )} */}
             
         </React.Fragment>
     );

@@ -51,9 +51,10 @@ function CardActiveList() {
     }
 
     useEffect(() => {
-        setTimeout(() => {
+        console.log(buttonRef.current)
+        if (buttonRef.current) {
             buttonRef.current.focus();
-        }, 100)    
+        }   
     }, [currentIndex]);
 
     return (
