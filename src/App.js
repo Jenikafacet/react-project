@@ -2,6 +2,7 @@ import './App.css';
 import Header from './component/Header';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import React from "react";
+import { WordsContextProvider } from './component/Context';
 
 const CardList = React.lazy(() => import('./component/CardList'));
 const CardActiveList = React.lazy(() => import('./component/CardActiveList'));
@@ -15,7 +16,8 @@ function App() {
   };
     
   return (
-    <Router>
+    <WordsContextProvider>
+      <Router>
         <div className="App">
           <Header />
           <React.Suspense fallback={<div>Loading...</div>}>
@@ -26,7 +28,8 @@ function App() {
             </Routes>
           </React.Suspense>
         </div>
-    </Router>
+      </Router> 
+    </WordsContextProvider>  
   );
 }
 

@@ -1,12 +1,15 @@
-import React, { useState }  from 'react';
+import React, { useState, useContext }  from 'react';
 import CardItem from './CardItem';
 // import CardActive from './CardActive';
-import cardListData from '../data/cardListData'; 
+// import cardListData from '../data/cardListData'; 
+import { WordsContext } from './Context';
 
 
 function CardList() {
 
-    const [cardList, setCardList] = useState(cardListData);
+    const { cardList, setCardList } = useContext(WordsContext);
+
+    // const [cardList, setCardList] = useState(WordsContext);
 
     const handleSave = (updatedItem) => {
         setCardList(prevList =>

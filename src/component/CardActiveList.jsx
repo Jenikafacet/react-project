@@ -1,10 +1,11 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useContext } from 'react';
 import CardActive from './CardActive'; 
-import cardListData from '../data/cardListData';
+// import cardListData from '../data/cardListData';
 import styles from './cardActiveList.module.css';
-import left from '../data/arrow-sm-left-svgrepo-com.svg'
-import right from '../data/arrow-sm-right-svgrepo-com.svg'
-import icon from '../data/trumpet_17951008.png'
+import left from '../data/arrow-sm-left-svgrepo-com.svg';
+import right from '../data/arrow-sm-right-svgrepo-com.svg';
+import icon from '../data/trumpet_17951008.png';
+import { WordsContext } from './Context';
 
 function CardActiveList() {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -12,13 +13,14 @@ function CardActiveList() {
     const [wordsCount, setWordsCount] = useState(0);
     const [learnedCards, setLearnedCards] = useState([]);
     const buttonRef = useRef();
+    const { cardList, setCardList } = useContext(WordsContext);
 
     const handleNext = () => {
-        if (currentIndex < cardListData.length -1) {
+        if (currentIndex < cardList.length -1) {
             setIsAnimating(true);
             setTimeout(() => {
                 setCurrentIndex((prevIndex) =>
-                    prevIndex < cardListData.length - 1 ? prevIndex + 1 : prevIndex
+                    prevIndex < cardList.length - 1 ? prevIndex + 1 : prevIndex
                 );
                 setIsAnimating(false)
             }, 300);
@@ -66,22 +68,22 @@ function CardActiveList() {
                 </button>
                 <div className={`${styles.card__transition} ${isAnimating ? styles.hidden : ''}`} >
                     <CardActive
-                        key={cardListData[currentIndex].id} 
-                        title={cardListData[currentIndex].title}
-                        transcription={cardListData[currentIndex].transcription}
-                        translation={cardListData[currentIndex].translation}
-                        handleWordsCount={()=>handleWordsCount(cardListData[currentIndex].id)}
-                        id={cardListData[currentIndex].id}
+                        key={cardList[currentIndex].id} 
+                        title={cardList[currentIndex].title}
+                        transcription={cardList[currentIndex].transcription}
+                        translation={cardList[currentIndex].translation}
+                        handleWordsCount={()=>handleWordsCount(cardList[currentIndex].id)}
+                        id={cardList[currentIndex].id}
                         buttonRef={buttonRef}
                     /> 
                 </div>
-                <button className={styles.button__box} onClick={handleNext} disabled={currentIndex === cardListData.length - 1}>
+                <button className={styles.button__box} onClick={handleNext} disabled={currentIndex === cardList.length - 1}>
                     <img src={right} alt="вперед" width="30px" height="30px" />
                 </button>
             </div>
-            <div className={styles.card__number}>{currentIndex + 1} из {cardListData.length}</div>
+            <div className={styles.card__number}>{currentIndex + 1} из {cardList.length}</div>
             <div>Изучено слов: {wordsCount}</div>
-            {currentIndex === cardListData.length - 1 && (
+            {currentIndex === cardList.length - 1 && (
                 <div className={styles.finish__massage}>
                     <div className={styles.finish__box}>
                         <div>Вы прошли все задания!</div>
