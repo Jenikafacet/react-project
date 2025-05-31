@@ -1,13 +1,12 @@
-import React from "react";
 import styles from './edit.module.css';
 
 function Edit(props) {
-    const {onClick} = props
+    const {onSave, deleteWord} = props;
     
     return (
         <div className={styles.button__box}>
-            <button onClick={onClick} className={styles.button__edit}>Edit</button>
-            <button className={styles.button__delete}>Delete</button>
+            <button onClick={onSave} className={styles.button__edit}>Edit</button>
+            <button onClick={deleteWord} className={styles.button__delete}>Delete</button>
         </div>
     );
 }

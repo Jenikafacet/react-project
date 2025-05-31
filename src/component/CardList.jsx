@@ -1,40 +1,32 @@
-import React, { useState, useContext }  from 'react';
+import React, { useContext, useState }  from 'react';
 import CardItem from './CardItem';
-// import CardActive from './CardActive';
-// import cardListData from '../data/cardListData'; 
 import { WordsContext } from './Context';
 
 
 function CardList() {
 
-    const { cardList, setCardList } = useContext(WordsContext);
+    const { cardList, deleteWord, addWord } = useContext(WordsContext);  
 
-    // const [cardList, setCardList] = useState(WordsContext);
+    const [newWord, setNewWord] = useState({ title: "", transcription: "", translation: "" });
 
-    const handleSave = (updatedItem) => {
-        setCardList(prevList =>
-            prevList.map(item =>
-                item.id === updatedItem.id ? { ...item, ...updatedItem } : item
-            )
-        );
+    const handleAdd = () => {
+        if (newWord.title.trim()) {
+            addWord(newWord);
+            setNewWord({ title: "", transcription: "", translation: "" });
+        }
     };
-
-    // const [activeId, setActiveId] = useState(null);
-    
-    // const handleClick = (id) => {
-    //     setActiveId(id);
-    // };
-
-    // const activeItem = cardList.find(item => item.id === activeId);
-    
 
     return (
         <React.Fragment>
-            <div className="card-list">
+                <div className="new-word">
+                    <input type="text" placeholder="word" value={newWord.title} onChange={(e) => setNewWord({ ...newWord, title: e.target.value })} />
+                    <input type="text" placeholder="transcription" value={newWord.transcription} onChange={(e) => setNewWord({ ...newWord, transcription: e.target.value })} />
+                    <input type="text" placeholder="translation" value={newWord.translation} onChange={(e) => setNewWord({ ...newWord, translation: e.target.value })} />
+                    <button onClick={handleAdd} className="button-add">Add word</button>
+                </div>
                 {cardList.map((item)=> {
                     return <CardItem 
-                        // onClick={() => handleClick(item.id)}
-                        onSave={handleSave}
+                        deleteWord={() => deleteWord(item.id)}
                         key={item.id}
                         id={item.id}
                         title={item.title}
@@ -42,18 +34,6 @@ function CardList() {
                         translation={item.translation}
                     />
                 })}
-            </div>
-            {/* {activeItem && (
-                <div className="card-active">
-                    <CardActive
-                        key={activeItem.id}
-                        title={activeItem.title}
-                        transcription={activeItem.transcription}
-                        translation={activeItem.translation}
-                    />
-                </div>
-            )} */}
-            
         </React.Fragment>
     );
 }

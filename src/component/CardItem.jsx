@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styles from './cardItem.module.css';
 import Save from "./Save";
 import Edit from "./Edit";
+import { WordsContext } from "./Context";
 
 function CardItem(props) {
-    const {onClick, title, transcription, translation, onSave, id} = props;
+    const {title, transcription, translation, id, deleteWord } = props;
+    const { handleSave } = useContext(WordsContext);
 
     const [isActive, setActive] = useState(false);
     const [errors, setErrors] = useState({
@@ -48,8 +50,8 @@ function CardItem(props) {
         });
 
         setActive(false);
-        if (onSave) {
-            onSave({
+        if (handleSave) {
+            handleSave({
                 id,
                 title: editTitle,
                 transcription: editTranscription,
@@ -86,13 +88,13 @@ function CardItem(props) {
     const isSaveDisabled = Object.values(errors).some(Boolean);
 
     return (
-        <div onClick={onClick} className="card">
+        <div className="card">
             {isActive === false
             ? <div className={styles.card__body}>
                 <h4 className={styles.card__title}>{title}</h4>
                 <p className={styles.card__transcription}>{transcription}</p>
                 <h4 className={styles.card__translation}>{translation}</h4>
-                <Edit onClick={handleClick} />
+                <Edit onSave={handleClick} deleteWord={deleteWord} />
             </div>
             : <div className={styles.card__body__add}>
                 <input type="text" value={editTitle} onChange={handleTitleChange} className={errors.title ? styles.inputError : ''} />

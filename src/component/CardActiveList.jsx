@@ -13,7 +13,7 @@ function CardActiveList() {
     const [wordsCount, setWordsCount] = useState(0);
     const [learnedCards, setLearnedCards] = useState([]);
     const buttonRef = useRef();
-    const { cardList, setCardList } = useContext(WordsContext);
+    const { cardList, setCardList, deleteWord } = useContext(WordsContext);
 
     const handleNext = () => {
         if (currentIndex < cardList.length -1) {

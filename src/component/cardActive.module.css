@@ -1,12 +1,12 @@
 .card__body {
     background-color: rgb(235, 231, 238);
-    padding: 10px 0;
+    padding-bottom: 20px;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: start;
-    width: 170px;
-    height: 200px;
+    justify-content: center;
+    width: 240px;
+    height: 300px;
     align-items: center;
     gap: 20px;
     margin: 20px;

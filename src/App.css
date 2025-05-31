@@ -53,3 +53,28 @@
   width: 300px;
 }
 
+.new-word {
+    display: flex;
+    justify-self: center;
+    justify-content: center;
+    align-items: center;
+    justify-content:space-between;
+    text-align: start;
+    width: 700px;
+    height: 70px;
+}
+
+.button-add {
+    background-color: aquamarine;
+    border: none;
+    border-radius: 10px;
+    padding: 5px 10px;
+    min-width: 52px;
+    cursor: pointer;
+    margin: 0 15px;
+}
+
+.button-add:hover {
+    font-size: 16px;
+    font-weight: bold;
+}
