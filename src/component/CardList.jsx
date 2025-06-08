@@ -1,19 +1,22 @@
-import React, { useContext, useState }  from 'react';
-import CardItem from './CardItem';
-import { WordsContext } from './Context';
+import React, { useState }  from "react";
+import CardItem from "./CardItem";
+import { observer } from "mobx-react-lite";
+import { useWordsStore } from "./Context";
 
-
-function CardList() {
-
-    const { cardList, deleteWord, addWord } = useContext(WordsContext);  
+const CardList = observer(() => {
+    const store = useWordsStore(); 
 
     const [newWord, setNewWord] = useState({ title: "", transcription: "", translation: "" });
+    const [error, setError] = useState("");
 
     const handleAdd = () => {
-        if (newWord.title.trim()) {
-            addWord(newWord);
-            setNewWord({ title: "", transcription: "", translation: "" });
+        if (!newWord.title.trim() || !newWord.transcription.trim() || !newWord.translation.trim()) {
+            setError("Заполните все поля");
+            return;
         }
+        setError("");
+        store.addWord(newWord);
+        setNewWord({ title: "", transcription: "", translation: "" });
     };
 
     return (
@@ -24,9 +27,10 @@ function CardList() {
                     <input type="text" placeholder="translation" value={newWord.translation} onChange={(e) => setNewWord({ ...newWord, translation: e.target.value })} />
                     <button onClick={handleAdd} className="button-add">Add word</button>
                 </div>
-                {cardList.map((item)=> {
+                {error && <p style={{color: "red"}}>{error}</p>}
+                {store.cardList.map((item)=> {
                     return <CardItem 
-                        deleteWord={() => deleteWord(item.id)}
+                        deleteWord={() => store.deleteWord(item.id)}
                         key={item.id}
                         id={item.id}
                         title={item.title}
@@ -36,6 +40,6 @@ function CardList() {
                 })}
         </React.Fragment>
     );
-}
+});
 
 export default CardList;

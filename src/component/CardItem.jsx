@@ -1,12 +1,13 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import styles from './cardItem.module.css';
 import Save from "./Save";
 import Edit from "./Edit";
-import { WordsContext } from "./Context";
+import { observer } from "mobx-react-lite";
+import { useWordsStore } from "./Context";
 
-function CardItem(props) {
+const CardItem = observer((props) =>  {
     const {title, transcription, translation, id, deleteWord } = props;
-    const { handleSave } = useContext(WordsContext);
+    const store = useWordsStore();
 
     const [isActive, setActive] = useState(false);
     const [errors, setErrors] = useState({
@@ -50,8 +51,8 @@ function CardItem(props) {
         });
 
         setActive(false);
-        if (handleSave) {
-            handleSave({
+        if (store.handleSave) {
+            store.handleSave({
                 id,
                 title: editTitle,
                 transcription: editTranscription,
@@ -104,6 +105,6 @@ function CardItem(props) {
             </div>}
         </div>
     );
-}
+});
 
 export default CardItem;

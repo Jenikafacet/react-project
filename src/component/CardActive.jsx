@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
-import styles from './cardActive.module.css';
+import styles from "./cardActive.module.css";
 
 function CardActive(props) {
     const {title, transcription, translation, buttonRef} = props;
 
     const [showTranslation, setShowTranslation] = useState(false);
 
-    const handleClick = () => {
+    const handleShowTranslation = () => {
         setShowTranslation(true);
+        props.handleWordsCount(props.id)
     };
 
     useEffect(() => {
@@ -26,10 +27,7 @@ function CardActive(props) {
                 ) : (
                     <button 
                         ref={buttonRef}
-                        onClick={()=> {
-                            handleClick();
-                            props.handleWordsCount(props.id)
-                        }} 
+                        onClick={handleShowTranslation}
                         className={styles.card__button}>
                         Проверить
                     </button>
