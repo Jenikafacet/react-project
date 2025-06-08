@@ -32,6 +32,7 @@ const WordsContextProvider = ({children}) => {
                 setError(err.message || "Ошибка загрузки");
             } finally {
                 setIsLoading(false);
+                
             }
         };
 
@@ -42,7 +43,7 @@ const WordsContextProvider = ({children}) => {
         setCardList(prev => prev.filter(item => item.id !== id));
     };
 
-        const addWord = (newItem) => {
+    const addWord = (newItem) => {
         setCardList(prev => [...prev, { id: Date.now(), ...newItem }]);
     };
 
